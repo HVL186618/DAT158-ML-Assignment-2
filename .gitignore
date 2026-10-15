@@ -1,0 +1,15 @@
+# Virtual environment
+.venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Local environment variables
+.env
+
+# Generated model artifacts
+models/*.pkl
+
+# Local data
+data/raw/

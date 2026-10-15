@@ -1,6 +1,0 @@
-import pickle
-import json
-
-#Må implementere ting her
-class MLModel:
-    print("test")
