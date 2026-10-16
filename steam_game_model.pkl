@@ -1,0 +1,6 @@
+import pickle
+import json
+
+#Må implementere ting her
+class MLModel:
+    print("test") #Usikker om dette er rett innhold
