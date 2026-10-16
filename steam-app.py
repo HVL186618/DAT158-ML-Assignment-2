@@ -1,14 +1,15 @@
 import streamlit as st
 
-# Set up the title of your web app
+
 st.title("Steam App")
 
-# Add a simple text description
+
 st.write("HVL ML Assignment 2 Prosjekt")
 
-# Add an interactive slider widget
-age = st.slider("Select your age", 0, 100, 25)
-st.write(f"You selected: {age}")
 
+url = st.text_input("URL")
 
-st.text_input("URL")
+type = st.pills("Type", ["app", "bundle"])
+
+#sjekker om du liker ender. Kan nekte å funke om denne ikke sjekkes av
+likeducks = st.checkbox("I like ducks") 
