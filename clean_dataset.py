@@ -43,11 +43,7 @@ print()
 
 
 # select relevant columns
-df = df[[
-    "name", "recent_reviews", "all_reviews",
-    "release_date", "popular_tags", "game_details",
-    "achievements", "genre", "price"
-]]
+
 
 # process silly review data into actual numbers
 def unsilly_reviews(review):
@@ -67,5 +63,14 @@ df[["reviews_count", "reviews_positive"]] = df["all_reviews"].apply(
 df[["recent_count", "recent_positive"]] = df["recent_reviews"].apply(
     lambda review: pd.Series(unsilly_reviews(review))
 )
+
+# process release date -> release year
+
 # save
+df = df[[
+    "name", "recent_count", "recent_positive",
+    "reviews_count", "reviews_positive",
+    "release_date", "popular_tags", "game_details",
+    "achievements", "genre", "price"
+]]
 df.to_csv("test.csv")
