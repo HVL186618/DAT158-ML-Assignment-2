@@ -11,8 +11,12 @@ st.write("HVL ML Assignment 2 Prosjekt")
 
 #type = st.pills("Type", ["app", "bundle"])
 
-d = st.date_input("Release Date");
+recentcount = st.number_input("Recent Reviews Count", min_value = 0, step = 1)
 
+recentpositive = st.number_input("Recent Positive %", max_value = 1, step = 0.01)
+
+
+releasedate = st.date_input("Release Date"); #utslippsdatoen
 
 
 #TODO Implementer resten av input
