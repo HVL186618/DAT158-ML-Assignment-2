@@ -36,6 +36,7 @@ price = st.number_input("Price (In dollars $)", min_value = 0, max_value = 999, 
 
 #sjekker om du liker ender. Kan nekte å funke om denne ikke sjekkes av
 likeducks = st.checkbox("I like ducks", key = "quack") 
+
 if not likeducks:
     st.write("Please confirm you like ducks.")
 
