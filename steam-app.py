@@ -27,11 +27,11 @@ releaseDate = st.date_input("Release Date"); #utslippsdatoen
 
 tags = st.text_input("Tags") #Kan være en annen input type?
 
-genre = st.text_input("Genre")
-
 gameDetails = st.text_input("Game Details")
 
 achievements = st.number_input("Achievements", min_value = 0, step = 1) #step=1, gjør at verdien må være et int og ikke et desimaltall
+
+genre = st.text_input("Genre")
 
 price = st.number_input("Price (In dollars $)", min_value = 0, max_value = 999, value = 0, step = 1)
 
