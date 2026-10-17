@@ -6,6 +6,8 @@ st.title("Steam App")
 
 st.write("HVL ML Assignment 2 Prosjekt")
 
+st.divider()
+
 #TODO Implementer resten av input. Fjern det som ikke trengs
 
 #url = st.text_input("URL")
