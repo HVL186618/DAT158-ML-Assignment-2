@@ -15,7 +15,7 @@ recentcount = st.number_input("Recent Reviews Count", min_value = 0, step = 1)
 
 recentpositive = st.slider("Recent Positive Reviews (%)", min_value = 0.00, max_value = 1.00, step = 0.01)
 
-reviewscount = st.number_input(min_value = 0, step = 1)
+reviewscount = st.number_input("Reviews Count", min_value = 0, step = 1)
 
 
 releasedate = st.date_input("Release Date"); #utslippsdatoen
