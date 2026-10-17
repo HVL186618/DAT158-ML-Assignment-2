@@ -25,7 +25,7 @@ releaseDate = st.date_input("Release Date"); #utslippsdatoen
 
 #TODO Implementer resten av input
 
-tags = st.text_input("Tags") #Kan være en annen input type?
+tags = st.text_input("Tags", key = "tags") #Kan være en annen input type?
 
 gameDetails = st.text_input("Game Details")
 
