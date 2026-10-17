@@ -38,3 +38,6 @@ price = st.number_input("Price (In dollars $)", min_value = 0, max_value = 999, 
 likeducks = st.checkbox("I like ducks", key = "quack") 
 if not likeducks:
     st.write("Please confirm you like ducks.")
+
+
+submit = st.button("Submit", disabled = not likeducks)
