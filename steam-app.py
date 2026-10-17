@@ -23,7 +23,7 @@ genre = st.text_input("Genre")
 
 game_details = st.text_input("Game Details")
 
-achievements = st.number_input("Achievements")
+achievements = st.number_input("Achievements", step=1)
 
 price = st.number_input("Price (In dollars $)", min_value=0, max_value=999, value=0, step=1)
 
