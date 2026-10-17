@@ -11,14 +11,16 @@ st.write("HVL ML Assignment 2 Prosjekt")
 
 #type = st.pills("Type", ["app", "bundle"])
 
-recentcount = st.number_input("Recent Reviews Count", min_value = 0, step = 1)
+recentCount = st.number_input("Recent Reviews Count", min_value = 0, step = 1)
 
-recentpositive = st.slider("Recent Positive Reviews (%)", min_value = 0.00, max_value = 1.00, step = 0.01)
+recentPositive = st.slider("Recent Positive Reviews (%)", min_value = 0.00, max_value = 1.00, step = 0.01)
 
-reviewscount = st.number_input("Reviews Count", min_value = 0, step = 1)
+reviewsCount = st.number_input("Reviews Count", min_value = 0, step = 1)
+
+reviewsPositive = st.slider("Recent Positive Reviews(%)", min_value = 0.00, max_value = 1.00, step = 0.01)
 
 
-releasedate = st.date_input("Release Date"); #utslippsdatoen
+releaseDate = st.date_input("Release Date"); #utslippsdatoen
 
 
 #TODO Implementer resten av input
@@ -27,7 +29,7 @@ tags = st.text_input("Tags") #Kan være en annen input type?
 
 genre = st.text_input("Genre")
 
-game_details = st.text_input("Game Details")
+gameDetails = st.text_input("Game Details")
 
 achievements = st.number_input("Achievements", min_value = 0, step = 1) #step=1, gjør at verdien må være et int og ikke et desimaltall
 
