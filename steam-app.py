@@ -11,7 +11,7 @@ st.write("HVL ML Assignment 2 Prosjekt")
 
 #type = st.pills("Type", ["app", "bundle"])
 
-d = st.date_input("When's your birthday");
+d = st.date_input("Release Date");
 
 
 
