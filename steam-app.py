@@ -13,7 +13,9 @@ st.write("HVL ML Assignment 2 Prosjekt")
 
 recentcount = st.number_input("Recent Reviews Count", min_value = 0, step = 1)
 
-recentpositive = st.slider("Recent Positive %", min_value = 0.00, max_value = 1.00, step = 0.01)
+recentpositive = st.slider("Recent Positive Reviews (%)", min_value = 0.00, max_value = 1.00, step = 0.01)
+
+reviewscount = st.number_input(min_value = 0, step = 1)
 
 
 releasedate = st.date_input("Release Date"); #utslippsdatoen
@@ -27,9 +29,9 @@ genre = st.text_input("Genre")
 
 game_details = st.text_input("Game Details")
 
-achievements = st.number_input("Achievements", min_value = 0, step=1) #step=1, gjør at verdien må være et int og ikke et desimaltall
+achievements = st.number_input("Achievements", min_value = 0, step = 1) #step=1, gjør at verdien må være et int og ikke et desimaltall
 
-price = st.number_input("Price (In dollars $)", min_value=0, max_value=999, value=0, step=1)
+price = st.number_input("Price (In dollars $)", min_value = 0, max_value = 999, value = 0, step = 1)
 
 #sjekker om du liker ender. Kan nekte å funke om denne ikke sjekkes av
 likeducks = st.checkbox("I like ducks") 
