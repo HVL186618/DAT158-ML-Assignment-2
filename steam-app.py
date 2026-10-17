@@ -41,4 +41,5 @@ if not likeducks:
     st.write("Please confirm you like ducks.")
 
 
-submit = st.button("Submit", disabled = not likeducks)
+submit = st.button("Submit", key = "submit", disabled = not likeducks)
+
