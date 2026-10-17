@@ -13,7 +13,7 @@ st.write("HVL ML Assignment 2 Prosjekt")
 
 recentcount = st.number_input("Recent Reviews Count", min_value = 0, step = 1)
 
-recentpositive = st.number_input("Recent Positive %", max_value = 1, step = 0.01)
+recentpositive = st.number_input("Recent Positive %", max_value = 1)
 
 
 releasedate = st.date_input("Release Date"); #utslippsdatoen
