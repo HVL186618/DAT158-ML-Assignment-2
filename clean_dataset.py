@@ -1,6 +1,15 @@
 import pandas as pd
 
-df = pd.read_csv("steam_games.csv")
+dataset = "steam_games.csv"
+output = "test.csv"
+include_free = False
+max_price = 300 # limit price in case outliers break stuff
+
+# =======================
+# =======================
+# =======================
+
+df = pd.read_csv(dataset)
 
 # filter out bundles
 df = df[df["types"] == "app"]
@@ -13,16 +22,19 @@ def get_price(original, discount):
     return original
 
 def price_number(price):
-    if isinstance(price, str):
-        if "$" in price:
-            return float(price[1:])
-        elif "free" in price.lower():
-            return 0
-        try:
-            return float(price)
-        except:
-            return "error"
-    return price
+    try:
+        if isinstance(price, str):
+            if "free" in price.lower():
+                return 0.0
+
+            price = price.replace("$", "").replace(",", "")
+
+        price = float(price)
+
+        return price if 0 <= price <= max_price else "error"
+
+    except (ValueError, TypeError):
+        return "error"
 
 # process price
 df["price"] = df.apply(
@@ -39,7 +51,6 @@ df["price"] = df["price"].apply(
 df = df[df["price"] != "error"]
 #print(df["price"])
 
-print()
 
 
 # select relevant columns
@@ -52,7 +63,7 @@ def unsilly_reviews(review):
         count, percent = review.split(")")
         count = count.replace(",", "")
 
-        percent = percent.strip(",- ").split("%")[0]
+        percent = percent.replace("*", "").strip(",").strip("- ").split("%")[0]
         return count, float(percent)/100.0
     except:
         return "error", "error"
@@ -64,13 +75,82 @@ df[["recent_count", "recent_positive"]] = df["recent_reviews"].apply(
     lambda review: pd.Series(unsilly_reviews(review))
 )
 
+# df = df[df["recent_count"] != "error"] # this filters 38k games down to 2.6k, not worth it
+# df = df[df["reviews_count"] != "error"]
+for col in [
+    "reviews_count", "reviews_positive",
+    "recent_count", "recent_positive"
+]:
+    df[col] = pd.to_numeric(df[col], errors="coerce")
+
+# filter achievements
+def parse_achievements(count):
+    try:
+        return int(count)
+    except ValueError:
+        return "error"
+
+df["achievements"] = df["achievements"].apply(
+    parse_achievements
+)
+df = df[df["achievements"] != "error"]
+
 # process release date -> release year
+# def release_date(date):
+#     try:
+#         date = int(date.split("-")[-1])
+#         if date > 27: # two dates are before 2000
+#             return "error"
+#         return date
+#     except: # date empty or nan
+#         return "error"
+# df["release_date"] = df["release_date"].apply(
+#     release_date
+# )
+# df = df[df["release_date"] != "error"]
+
+# release year
+dates = df["release_date"].astype("string")
+
+df["release_year"] = pd.to_datetime(
+    dates,
+    format="mixed",
+    dayfirst=True,
+    errors="coerce"
+).dt.year
+
+# Fix dates like "May-15" and "Jul-16"
+short_dates = dates.str.fullmatch(r"[A-Za-z]{3}-\d{2}", na=False)
+
+df.loc[short_dates, "release_year"] = pd.to_datetime(
+    dates[short_dates],
+    format="%b-%y",
+    errors="coerce"
+).dt.year
+
+df = df.dropna(subset=["release_year"])
+df["release_year"] = df["release_year"].astype(int)
+
+# url and app id might be useful
+df["app_id"] = df["url"].str.extract(
+    r"/app/(\d+)"
+)
+
+df = df.drop_duplicates(subset="app_id")
 
 # save
 df = df[[
     "name", "recent_count", "recent_positive",
     "reviews_count", "reviews_positive",
-    "release_date", "popular_tags", "game_details",
-    "achievements", "genre", "price"
+    "release_year", "popular_tags", "game_details",
+    "achievements", "genre", "price", "url", "app_id"
 ]]
-df.to_csv("test.csv")
+
+if not include_free:
+    df = df[df["price"] > 0]
+
+print(f"Cleaned dataset: {len(df)} games")
+print(df.isna().sum())
+print(df.dtypes)
+
+df.to_csv(output, index_label="id")
