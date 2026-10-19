@@ -3,9 +3,10 @@ import numpy as np
 import joblib as jlib
 
 #Laster lagret model og scaler
-#model = jlib.load("") #TODO: sett inn classifier model .pkl fil her
-#scaler = jlib.load("") #TODO: Sett inn scaler .pkl fil her
-
+'''
+model = jlib.load("") #TODO: sett inn classifier model .pkl fil her
+scaler = jlib.load("") #TODO: Sett inn scaler .pkl fil her
+'''
 
 st.title("Steam App")
 
@@ -55,12 +56,16 @@ if not likeducks:
     st.write("Please confirm you like ducks.")
 
 #Forbedrer input
-##features = np.array([[]])
-#features_scaled = scaler.transform(features)
+'''
+features = np.array([[]])
+features_scaled = scaler.transform(features)
+'''
 
 if st.button("Submit", key = "submit", disabled = not likeducks):
-    #prediction = model.predict("features_scaled")[0] #juster features
-    #st.success(f"the predicted price is: **{prediction}**)
+    '''
+    prediction = model.predict("features_scaled")[0] #juster features
+    st.success(f"the predicted price is: **{prediction}**)
+    '''
     st.write("Test")
     
 
