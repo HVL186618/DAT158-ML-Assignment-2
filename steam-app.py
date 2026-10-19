@@ -17,12 +17,12 @@ st.divider()
 recentCount = st.number_input("Recent Reviews Count", min_value = 0, step = 1, key = "recent-count")
 
 #min og max verdi representerer fra 0.00 til 1.00 prosent av nylige positive reviews
-recentPositive = st.slider("Recent Positive Reviews (%)", min_value = 0, max_value = 100, step = 1, key = "recent-positive")
+recentPositive = st.slider("Recent Positive Reviews (%)", min_value = 0.00, max_value = 1, step = 0.01, key = "recent-positive")
 
 reviewsCount = st.number_input("Reviews Count", min_value = 0, step = 1, key = "reviews-count")
 
 #min og max verdi representerer fra 0.00 til 1.00 av positive reviews
-reviewsPositive = st.slider("Recent Positive Reviews(%)", min_value = 0, max_value = 100, step = 1, key = "reviews-positive")
+reviewsPositive = st.slider("Recent Positive Reviews(%)", min_value = 0.00, max_value = 1, step = 0.01, key = "reviews-positive")
 
 
 releaseDate = st.date_input("Release Date", key = "release-date"); #utslippsdatoen
