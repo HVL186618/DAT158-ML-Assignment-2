@@ -1,7 +1,7 @@
 import streamlit as st
 import numpy as np
 #import joblib as jlib
-#TODO: Finn ut hvordan jeg
+#TODO: Finn ut hvordan jeg importterer joblib for streamlit.app siden
 
 #Laster lagret model og scaler
 '''
