@@ -1,6 +1,5 @@
 import streamlit as st
 import numpy as np
-from joblib import load
 #import joblib as jlib
 #TODO: Finn ut hvordan jeg importterer joblib for streamlit.app serveren/siden
 
