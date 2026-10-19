@@ -19,6 +19,10 @@ st.divider()
 
 #type = st.pills("Type", ["app", "bundle"])
 
+publisher = st.text_input("Publisher", key = "publisher", placeholder = "Annapurna Interactive")
+
+developer = st.text_input("Developer", key = "developer", placeholder = "Mobius Digital")
+
 recentCount = st.number_input("Recent Reviews Count", min_value = 0, step = 1, key = "recent-count")
 
 #min og max verdi representerer fra 0.00 til 1.00 prosent av nylige positive reviews
@@ -61,7 +65,7 @@ if not likeducks:
 if st.button("Submit", key = "submit", disabled = not likeducks):
     #prediction = model.predict("features_scaled")[0] #juster features
     #st.success(f"the predicted price is: **{prediction}**) #printer ut prediction pris verdi
-    st.write("Test")
+    st.write("Test") #bare en test for å se om knappen funker. Kan fjernes etterpå
     
 
 
