@@ -1,6 +1,6 @@
 import streamlit as st
 import numpy as np
-import joblib as jlib
+import joblib
 
 #Laster lagret model og scaler
 '''
