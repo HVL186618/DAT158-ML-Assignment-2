@@ -39,7 +39,7 @@ reviewsPositive = st.slider("Recent Positive Reviews (%)", min_value = 0.00, max
 releaseDate = st.date_input("Release Date", key = "release-date"); #utslippsdatoen
 
 
-popularTags = st.text_input("Popular Tags", key = "popular-tags", help = "Add tags seperated by ','", label_visibility =  "visible", placeholder = "Space") #Kan være en annen input type?
+popularTags = st.text_input("Popular Tags", key = "popular-tags", help = "Add tags seperated by ','", label_visibility =  "visible", placeholder = "Exploration, Space, Mystery") #Kan være en annen input type?
 
 gameDetails = st.text_input("Game Details", key = "game-details", help = "Add tags seperated by ','", label_visibility = "visible", placeholder = "Single-player")
 
