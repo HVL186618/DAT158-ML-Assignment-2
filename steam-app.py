@@ -60,7 +60,7 @@ if not likeducks:
 
 if st.button("Submit", key = "submit", disabled = not likeducks):
     #prediction = model.predict("features_scaled")[0] #juster features
-    #st.success(f"the predicted price is: **{prediction}**)
+    #st.success(f"the predicted price is: **{prediction}**) #printer ut prediction pris verdi
     st.write("Test")
     
 
