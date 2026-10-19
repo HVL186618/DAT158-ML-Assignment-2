@@ -4,10 +4,8 @@ import numpy as np
 #TODO: Finn ut hvordan jeg importterer joblib for streamlit.app serveren/siden
 
 #Laster lagret model og scaler
-'''
-model = jlib.load("") #TODO: sett inn classifier model .pkl fil her
-scaler = jlib.load("") #TODO: Sett inn scaler .pkl fil her
-'''
+#model = jlib.load("") #TODO: sett inn classifier model .pkl fil her
+#scaler = jlib.load("") #TODO: Sett inn scaler .pkl fil her
 
 st.title("Steam App")
 
@@ -57,10 +55,9 @@ if not likeducks:
     st.write("Please confirm you like ducks.")
 
 #Forbedrer input
-'''
-features = np.array([[]])
-features_scaled = scaler.transform(features)
-'''
+#features = np.array([[]])
+#features_scaled = scaler.transform(features)
+
 
 if st.button("Submit", key = "submit", disabled = not likeducks):
     '''
