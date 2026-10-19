@@ -1,4 +1,10 @@
 import streamlit as st
+import numpy as np
+import joblib as jlib
+
+#Laster lagret model og scaler
+#model = jlib.load("") #TODO: sett inn classifier model .pkl fil her
+#scaler = jlib.load("") #TODO: Sett inn scaler .pkl fil her
 
 
 st.title("Steam App")
@@ -41,13 +47,21 @@ genre = st.text_input("Genre", key = "genre", help = "Input a single genre.", la
 price = st.number_input("Price (In dollars $)", min_value = 0, max_value = 999, value = 0, step = 1, key = "price")
 
 #sjekker om du liker ender. Kan nekte å funke om denne ikke sjekkes av
-likeducks = st.checkbox("I like ducks", key = "quack") 
+likeducks = st.checkbox("I like ducks", key = "quack", help = "Mandatory.", label_visibility = "visible") 
 
 st.divider()
 
 if not likeducks:
     st.write("Please confirm you like ducks.")
 
+#Forbedrer input
+##features = np.array([[]])
+#features_scaled = scaler.transform(features)
 
-submit = st.button("Submit", key = "submit", disabled = not likeducks)
+if st.button("Submit", key = "submit", disabled = not likeducks):
+    #prediction = model.predict("features_scaled")[0] #juster features
+    #st.success(f"the predicted price is: **{prediction}**)
+    st.write("Test")
+    
+
 
