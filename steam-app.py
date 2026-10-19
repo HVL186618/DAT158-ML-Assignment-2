@@ -1,6 +1,7 @@
 import streamlit as st
 import numpy as np
-import joblib
+import joblib as jlib
+#TODO: Finn ut hvordan jeg
 
 #Laster lagret model og scaler
 '''
