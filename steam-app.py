@@ -3,7 +3,7 @@ import numpy as np
 import joblib as jlib
 
 #Laster lagret model og scaler
-#model = jlib.load("") #TODO: sett inn classifier model .pkl fil her
+model = jlib.load("model/steam_price_model.pkl") #TODO: sett inn classifier model .pkl fil her
 #scaler = jlib.load("") #TODO: Sett inn scaler .pkl fil her
 
 st.title("Steam App")
@@ -59,7 +59,7 @@ if not likeducks:
 
 #Forbedrer input
 #TODO: fjern kommentar og input parametere inni features array
-#features = np.array([[]]) #lager en array for parametere
+features = np.array([[publisher, developer, recentCount]]) #lager en array for parametere
 #features_scaled = scaler.transform(features)
 
 
