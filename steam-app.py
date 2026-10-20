@@ -60,7 +60,7 @@ if not likeducks:
 #Forbedrer input
 #TODO: fjern kommentar og input parametere inni features array
 features = np.array([[publisher, developer, recentCount, recentPositive, reviewsCount, reviewsPositive, releaseDate, popularTags, gameDetails, achievements, genre, price]]) #lager en array for parametere
-#features_scaled = scaler.transform(features)
+features_scaled = scaler.transform(features)
 
 
 if st.button("Submit", key = "submit", disabled = not likeducks): #"disabled" sørger for at knappen skrus av når "likeducks" er i 'false' tilstand
