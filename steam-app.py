@@ -1,6 +1,7 @@
 import streamlit as st
 import numpy as np
 import joblib as jlib
+import sklearn
 
 #Laster lagret model og scaler
 model = jlib.load("model/steam_price_model.pkl") #TODO: sett inn classifier model .pkl fil her
