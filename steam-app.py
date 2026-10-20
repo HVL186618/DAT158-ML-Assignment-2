@@ -59,7 +59,7 @@ if not likeducks:
 
 #Forbedrer input
 #TODO: fjern kommentar og input parametere inni features array
-#features = np.array([[]]) #lager en array for parametere
+features = np.array([[publisher, developer, recentCount]]) #lager en array for parametere
 #features_scaled = scaler.transform(features)
 
 
