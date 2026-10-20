@@ -3,7 +3,8 @@ import pandas as pd
 dataset = "steam_games.csv"
 output = "test.csv"
 include_free = False
-max_price = 300 # limit price in case outliers break stuff
+free_threshold = .9
+max_price = 90 # suspicious prices start at $96.28
 
 # =======================
 # =======================
@@ -138,19 +139,40 @@ df["app_id"] = df["url"].str.extract(
 
 df = df.drop_duplicates(subset="app_id")
 
+# developer and publisher + make everything lower case
+def lowercase(s):
+    if isinstance(s, str):
+        return s.lower()
+    return s
+df["developer"] = df["developer"].apply(lowercase)
+df["publisher"] = df["publisher"].apply(lowercase)
+df["popular_tags"] = df["popular_tags"].apply(lowercase)
+df["game_details"] = df["game_details"].apply(lowercase)
+
 # save
 df = df[[
     "name", "recent_count", "recent_positive",
     "reviews_count", "reviews_positive",
     "release_year", "popular_tags", "game_details",
-    "achievements", "genre", "price", "url", "app_id"
+    "achievements", "genre", "price", "url", "app_id",
+    "developer", "publisher" # adding these. could make high price estimates better
 ]]
 
 if not include_free:
-    df = df[df["price"] > 0]
+    df = df[df["price"] > free_threshold]
+
+
+# ---
+"""
+clean suspicious prices
+suspicious prices are messing with estimates. especially cheap games being listed under high rices in bundles.
+i'll let chatgpt find suspicious listings and check against the actual listing on steam
+"""
+
 
 print(f"Cleaned dataset: {len(df)} games")
 print(df.isna().sum())
 print(df.dtypes)
 
 df.to_csv(output, index_label="id")
+
