@@ -483,3 +483,7 @@ os.makedirs("models", exist_ok=True)
 joblib.dump(model_package, "models/steam_price_model.pkl")
 
 print("Model saved!")
+
+import joblib
+
+joblib.dump(scaler, "scaler.joblib")
