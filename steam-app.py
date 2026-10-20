@@ -3,7 +3,7 @@ import numpy as np
 import joblib as jlib
 
 #Laster lagret model og scaler
-#model = jlib.load("") #TODO: sett inn classifier model .pkl fil her
+model = jlib.load("steam_price_model.pkl") #TODO: sett inn classifier model .pkl fil her
 #scaler = jlib.load("") #TODO: Sett inn scaler .pkl fil her
 
 st.title("Steam App")
