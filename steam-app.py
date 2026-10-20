@@ -58,11 +58,11 @@ if not likeducks:
     st.write("Please confirm you like ducks.")
 
 #Forbedrer input
-#features = np.array([[]])
+#features = np.array([[]]) #lager en array for parametere
 #features_scaled = scaler.transform(features)
 
 
-if st.button("Submit", key = "submit", disabled = not likeducks):
+if st.button("Submit", key = "submit", disabled = not likeducks): #"disabled" sørger for at knappen skrus av når "likeducks" er i 'false' tilstand
     #prediction = model.predict("features_scaled")[0] #juster features
     #st.success(f"the predicted price is: **{prediction}**) #printer ut prediction pris verdi
     st.write("Test") #bare en test for å se om knappen funker. Kan fjernes etterpå
