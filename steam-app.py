@@ -58,6 +58,7 @@ if not likeducks:
     st.write("Please confirm you like ducks.")
 
 #Forbedrer input
+#TODO: fjern kommentar og input parametere inni features array
 #features = np.array([[]]) #lager en array for parametere
 #features_scaled = scaler.transform(features)
 
