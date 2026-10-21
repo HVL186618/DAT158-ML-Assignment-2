@@ -7,7 +7,7 @@ import pandas as pd
 from scipy.sparse import csr_matrix, hstack
 
 
-MODEL_PATH = Path(__file__).resolve().parent / "models" / "steam_price_model.pkl"
+MODEL_PATH = Path(__file__).resolve().parent / "model" / "steam_price_model.pkl"
 
 # IMPORTANT: Must match the hstack order in train_model.py exactly.
 CATEGORICAL_FEATURES = (
