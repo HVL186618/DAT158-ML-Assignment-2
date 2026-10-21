@@ -3,8 +3,8 @@ from predict import MODEL_PATH, predict_price
 
 
 #Laster lagret model og scaler
-model = jlib.load("model/steam_price_model.pkl") 
-scaler = jlib.load("model/steam_price_scaler.duck") 
+#model = jlib.load("model/steam_price_model.pkl") 
+#scaler = jlib.load("model/steam_price_scaler.duck") 
 
 st.title("Steam App")
 
