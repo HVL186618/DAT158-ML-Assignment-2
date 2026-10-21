@@ -1,7 +1,6 @@
 import streamlit as st
-import numpy as np
-import joblib as jlib
-import sklearn
+from predict import MODEL_PATH, predict_price
+
 
 #Laster lagret model og scaler
 model = jlib.load("model/steam_price_model.pkl") 
@@ -36,7 +35,7 @@ reviewsCount = st.number_input("Reviews Count", min_value = 0, step = 1, key = "
 reviewsPositive = st.slider("Recent Positive Reviews (%)", min_value = 0.00, max_value = 1.00, step = 0.01, key = "reviews-positive", help = "From 0-100%, 0.00 = 0 and 1.00 = 100", label_visibility = "visible")
 
 
-releaseDate = st.date_input("Release Date", key = "release-date"); #utslippsdatoen
+releaseDate = st.number_input("Release Date", key = "release-date") #utslippsdatoen
 
 
 popularTags = st.text_input("Popular Tags", key = "popular-tags", help = "Add tags seperated by ','", label_visibility =  "visible", placeholder = "Exploration, Space, Mystery") #Kan være en annen input type?
@@ -54,8 +53,6 @@ likeducks = st.checkbox("I like ducks", key = "quack", help = "Mandatory.", labe
 
 st.divider()
 
-if not likeducks:
-    st.write("Please confirm you like ducks.")
 
 #Forbedrer input
 #features = np.array([[publisher, developer, recentCount, recentPositive, reviewsCount, reviewsPositive, releaseDate, popularTags, gameDetails, achievements, genre, price]]) #lager en array for parametere
@@ -68,11 +65,33 @@ if not likeducks:
 
 if st.button("Submit", key = "submit", disabled = not likeducks): #"disabled" sørger for at knappen skrus av når "likeducks" er i 'false' tilstand
 
+    if not likeducks:
+        st.write("Please confirm you like ducks.")
 
-    #prediction = model.predict("features_scaled")[0] #juster features
+    else:
+        game = {
+            "publisher": publisher,
+            "developer": developer,
+            "popular_tags": popularTags,
+            "genre": genre,
+            "game_details": gameDetails,
+            "achievements": int(achievements), #konverterer 'achievements' til int type
+            "release_year": int(releaseDate)
 
-    #st.success(f"the predicted price is: **{prediction}**") #printer ut prediction pris verdi
-    st.write("Test") #bare en test for å se om knappen funker. Kan fjernes etterpå
+
+        }
+        try:
+            prediction = predict_price(game)
+        except(OSError, KeyError, TypeError, ValueError) as exc:
+            st.error(f"Couldn't make a prediction: **{exc}**")
+        else:
+            st.success(f"the predicted price is: **{prediction}**") #printer ut prediction pris verdi
+
+
+        #prediction = model.predict("features_scaled")[0] #juster features
+
+        #
+        #st.write("Test") #bare en test for å se om knappen funker. Kan fjernes etterpå
     
 
 
