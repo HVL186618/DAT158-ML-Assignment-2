@@ -47,7 +47,7 @@ achievements = st.number_input("Achievements", min_value = 0, step = 1, key = "a
 
 genre = st.text_input("Genre", key = "genre", help = "Input a single genre.", label_visibility = "visible", placeholder = "Adventure")
 
-p#rice = st.number_input("Price (In dollars $)", min_value = 0, max_value = 999, value = 0, step = 1, key = "price")
+#price = st.number_input("Price (In dollars $)", min_value = 0, max_value = 999, value = 0, step = 1, key = "price")
 
 #sjekker om du liker ender. Kan nekte å funke om denne ikke sjekkes av
 likeducks = st.checkbox("I like ducks", key = "quack", help = "Mandatory.", label_visibility = "visible") 
@@ -60,6 +60,7 @@ if not likeducks:
 #Forbedrer input
 #features = np.array([[publisher, developer, recentCount, recentPositive, reviewsCount, reviewsPositive, releaseDate, popularTags, gameDetails, achievements, genre, price]]) #lager en array for parametere
 #Dette funker ikke så jeg kommenterer det ut
+
 features = np.array([[achievements, releaseDate.year]], dtype = float)
 
 #features_scaled = scaler.transform(features) #Denne gir feil #TODO: Finn ut hvordan man parser dette
