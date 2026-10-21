@@ -61,15 +61,17 @@ if not likeducks:
 #features = np.array([[publisher, developer, recentCount, recentPositive, reviewsCount, reviewsPositive, releaseDate, popularTags, gameDetails, achievements, genre, price]]) #lager en array for parametere
 #Dette funker ikke så jeg kommenterer det ut
 
-features = np.array([[achievements, releaseDate.year]], dtype = float)
+#features = np.array([[achievements, releaseDate.year]], dtype = float)
 
-features_scaled = scaler.transform(features) #Denne gir feil #TODO: Finn ut hvordan man parser dette
+#features_scaled = scaler.transform(features) #Denne gir feil #TODO: Finn ut hvordan man parser dette
 
 
 if st.button("Submit", key = "submit", disabled = not likeducks): #"disabled" sørger for at knappen skrus av når "likeducks" er i 'false' tilstand
-    prediction = model.predict("features_scaled")[0] #juster features
 
-    st.success(f"the predicted price is: **{prediction}**") #printer ut prediction pris verdi
+
+    #prediction = model.predict("features_scaled")[0] #juster features
+
+    #st.success(f"the predicted price is: **{prediction}**") #printer ut prediction pris verdi
     st.write("Test") #bare en test for å se om knappen funker. Kan fjernes etterpå
     
 
