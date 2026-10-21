@@ -68,7 +68,19 @@ features = np.array([[achievements, releaseDate.year]], dtype = float)
 
 if st.button("Submit", key = "submit", disabled = not likeducks): #"disabled" sørger for at knappen skrus av når "likeducks" er i 'false' tilstand
     prediction = model.predict("features_scaled")[0] #juster features
-    #st.success(f"the predicted price is: **{prediction}**") #printer ut prediction pris verdi
+
+    features = prepare_features(
+        popular_tags=popularTags,
+        genre=genre,
+        game_details=gameDetails,
+        publisher=publisher,
+        developer=developer,
+        achievements=achievements,
+        release_year=releaseDate.year
+    )
+
+
+    st.success(f"the predicted price is: **{prediction}**") #printer ut prediction pris verdi
     st.write("Test") #bare en test for å se om knappen funker. Kan fjernes etterpå
     
 
