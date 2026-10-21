@@ -1,3 +1,7 @@
+"""
+>streamlit run steam-app.py
+"""
+
 import streamlit as st
 from predict import MODEL_PATH, predict_price
 
