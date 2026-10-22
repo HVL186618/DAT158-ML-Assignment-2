@@ -68,7 +68,8 @@ if st.button("Submit", key = "submit", disabled = not likeducks): #"disabled" s√
             prediction = predict_price(game) #lager en 'prediction' objekt som blir da desimaltall verdi returnert av predict_price(game)
         except(OSError, KeyError, TypeError, ValueError) as exc:
             st.error(f"Couldn't make a prediction: **{exc}**")
-        st.success(f"the predicted price is: **{prediction}**") #printer ut prediction pris verdi
+        else:
+            st.success(f"the predicted price is: **{prediction}**") #printer ut prediction pris verdi
     
 
 
