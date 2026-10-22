@@ -2,16 +2,8 @@
 >streamlit run steam-app.py
 """
 
-import streamlit as st
-#import numpy as np
-#import joblib as jlib
-#import sklearn
+import streamlit as st #må ha med for å bruke st funksjoner
 from predict import MODEL_PATH, predict_price
-
-
-#Laster lagret model og scaler
-#model = jlib.load("model/steam_price_model.pkl") 
-#scaler = jlib.load("model/steam_price_scaler.duck") 
 
 st.title("Steam App")
 
@@ -61,14 +53,6 @@ likeducks = st.checkbox("I like ducks", key = "quack", help = "Mandatory.", labe
 st.divider()
 
 
-#Forbedrer input
-#features = np.array([[publisher, developer, recentCount, recentPositive, reviewsCount, reviewsPositive, releaseDate, popularTags, gameDetails, achievements, genre, price]]) #lager en array for parametere
-#Dette funker ikke så jeg kommenterer det ut
-
-#features = np.array([[achievements, releaseDate.year]], dtype = float)
-
-#features_scaled = scaler.transform(features) #Denne gir feil #TODO: Finn ut hvordan man parser dette
-
 
 if st.button("Submit", key = "submit", disabled = not likeducks): #"disabled" sørger for at knappen skrus av når "likeducks" er i 'false' tilstand
 
@@ -84,12 +68,6 @@ if st.button("Submit", key = "submit", disabled = not likeducks): #"disabled" s�
             st.error(f"Couldn't make a prediction: **{exc}**")
         else:
             st.success(f"the predicted price is: **{prediction}**") #printer ut prediction pris verdi
-
-
-        #prediction = model.predict("features_scaled")[0] #juster features
-
-        #
-        #st.write("Test") #bare en test for å se om knappen funker. Kan fjernes etterpå
     
 
 
