@@ -2,7 +2,10 @@
 >streamlit run steam-app.py
 """
 
-import streamlit as st
+#import streamlit as st
+#import numpy as np
+#import joblib as jlib
+#import sklearn
 from predict import MODEL_PATH, predict_price
 
 
@@ -73,17 +76,8 @@ if st.button("Submit", key = "submit", disabled = not likeducks): #"disabled" s√
         st.write("Please confirm you like ducks.")
 
     else:
-        game = {
-            "publisher": publisher,
-            "developer": developer,
-            "popular_tags": popularTags,
-            "genre": genre,
-            "game_details": gameDetails,
-            "achievements": int(achievements), #konverterer 'achievements' til int type
-            "release_year": int(releaseDate)
 
-
-        }
+        game = {"publisher": publisher, "developer": developer, "popular_tags": popularTags, "genre": genre, "game_details": gameDetails, "achievements": int(achievements), "release_year": int(releaseDate)} #konverterer 'achievements' til int type
         try:
             prediction = predict_price(game)
         except(OSError, KeyError, TypeError, ValueError) as exc:
