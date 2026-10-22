@@ -2,10 +2,10 @@
 >streamlit run steam-app.py
 """
 
-import streamlit as st
+#import streamlit as st
 import numpy as np
-import joblib as jlib
-import sklearn
+#import joblib as jlib
+#import sklearn
 from predict import MODEL_PATH, predict_price
 
 
