@@ -56,18 +56,19 @@ st.divider()
 
 if st.button("Submit", key = "submit", disabled = not likeducks): #"disabled" sørger for at knappen skrus av når "likeducks" er i 'false' tilstand
 
-    if not likeducks:
-        st.write("Please confirm you like ducks.")
+    if not likeducks:#hvis du ikke like ender...
+        st.write("Please confirm you like ducks.") #skriver ut melding.
 
-    else:
+    else: #ellers om likeducks er 'true'...
 
         game = {"publisher": publisher, "developer": developer, "popular_tags": popularTags, "genre": genre, "game_details": gameDetails, "achievements": int(achievements), "release_year": int(releaseDate)} #konverterer 'achievements' til int type
-        try:
-            prediction = predict_price(game)
+        #lager en 'game' liste som passer parametere til input som 'predict_price' funksjon forventer.
+       
+        try: #prøver å utføre følgende kode blokk...
+            prediction = predict_price(game) #lager en 'prediction' objekt som blir da desimaltall verdi returnert av predict_price(game)
         except(OSError, KeyError, TypeError, ValueError) as exc:
             st.error(f"Couldn't make a prediction: **{exc}**")
-        else:
-            st.success(f"the predicted price is: **{prediction}**") #printer ut prediction pris verdi
+        st.success(f"the predicted price is: **{prediction}**") #printer ut prediction pris verdi
     
 
 
