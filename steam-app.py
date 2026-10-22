@@ -34,7 +34,7 @@ reviewsCount = st.number_input("Reviews Count", min_value = 0, step = 1, key = "
 reviewsPositive = st.slider("Recent Positive Reviews (%)", min_value = 0.00, max_value = 1.00, step = 0.01, key = "reviews-positive", help = "From 0-100%, 0.00 = 0 and 1.00 = 100", label_visibility = "visible")
 
 
-releaseDate = st.number_input("Release Date", key = "release-date") #utslippsdatoen
+releaseDate = st.number_input("Release Date", key = "release-date", min_value = 2003, step = 1) #utslippsdatoen
 
 
 popularTags = st.text_input("Popular Tags", key = "popular-tags", help = "Add tags seperated by ','", label_visibility =  "visible", placeholder = "Exploration, Space, Mystery") #Kan være en annen input type?
