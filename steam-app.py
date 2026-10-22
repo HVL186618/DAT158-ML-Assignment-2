@@ -3,9 +3,9 @@
 """
 
 #import streamlit as st
-import numpy as np
+#import numpy as np
 #import joblib as jlib
-#import sklearn
+import sklearn
 from predict import MODEL_PATH, predict_price
 
 
