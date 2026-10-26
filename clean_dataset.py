@@ -148,6 +148,7 @@ df["developer"] = df["developer"].apply(lowercase)
 df["publisher"] = df["publisher"].apply(lowercase)
 df["popular_tags"] = df["popular_tags"].apply(lowercase)
 df["game_details"] = df["game_details"].apply(lowercase)
+df["languages"] = df["languages"].apply(lowercase)
 
 # save
 df = df[[
@@ -155,7 +156,8 @@ df = df[[
     "reviews_count", "reviews_positive",
     "release_year", "popular_tags", "game_details",
     "achievements", "genre", "price", "url", "app_id",
-    "developer", "publisher" # adding these. could make high price estimates better
+
+    "developer", "publisher", "languages" # adding these could make high price estimates better
 ]]
 
 if not include_free:
