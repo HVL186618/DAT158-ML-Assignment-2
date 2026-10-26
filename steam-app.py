@@ -63,7 +63,7 @@ if st.button("Submit", key = "submit", disabled = not likeducks): #"disabled" s�
 
     else: #ellers om likeducks er 'true'...
 
-        game = {"publisher": publisher, "developer": developer, "popular_tags": popularTags, "genre": genre, "game_details": gameDetails, "achievements": int(achievements), "release_year": int(releaseDate)} #konverterer 'achievements' til int type
+        game = {"publisher": publisher, "developer": developer, "popular_tags": popularTags, "genre": genre, "game_details": gameDetails, "achievements": int(achievements), "release_year": int(releaseDate), "languages": languages} #konverterer 'achievements' til int type
         #lager en 'game' liste som passer parametere til input som 'predict_price' funksjon forventer.
        
         try: #prøver å utføre følgende kode blokk...
