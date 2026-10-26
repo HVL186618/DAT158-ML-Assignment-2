@@ -1,0 +1,20 @@
+{
+  "selection_rule": "0.70 * CV MAE($20+) + 0.30 * CV MAE(overall)",
+  "cv_score": 10.880160684348212,
+  "cv_overall_mae": 5.3921187235973065,
+  "cv_mae_20_plus": 13.232178667527174,
+  "cv_mae_40_plus": 23.204726792428797,
+  "config": {
+    "n_estimators": 700,
+    "max_depth": 5,
+    "learning_rate": 0.04,
+    "min_child_weight": 2,
+    "subsample": 0.85,
+    "colsample_bytree": 0.65,
+    "reg_lambda": 1.0,
+    "reg_alpha": 1.0,
+    "gamma": 2.0,
+    "weight20": 3.0,
+    "weight40": 6.0
+  }
+}

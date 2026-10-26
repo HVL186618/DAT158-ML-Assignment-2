@@ -5,7 +5,7 @@ from sklearn.dummy import DummyRegressor
 from sklearn.metrics import mean_absolute_error
 
 dataset = "test.csv"
-dataset = "steam_cleaned_experimental_cluster_filtered.csv"
+# dataset = "steam_cleaned_experimental_cluster_filtered.csv"
 
 # skip = ["forest", "wforest"]
 
@@ -104,7 +104,7 @@ print(f"Number of tags: {len(tag_encoder.classes_)}")
 
 # ---
 """
-genre and game details
+genre, game details, and languages
 """
 
 genre_encoder = MultiLabelBinarizer(sparse_output=True)
@@ -125,8 +125,19 @@ X_validation_details = details_encoder.transform(
     parse_tags(validation["game_details"])
 )
 
+# languages
+languages_encoder = MultiLabelBinarizer(sparse_output=True)
+
+X_train_languages = languages_encoder.fit_transform(
+    parse_tags(train["languages"])
+)
+X_validation_languages = languages_encoder.transform(
+    parse_tags(validation["languages"])
+)
+
 print(f"Genres: {len(genre_encoder.classes_)}")
 print(f"Game details: {len(details_encoder.classes_)}")
+print(f"Languages: {len(languages_encoder.classes_)}")
 
 # ---
 """
@@ -183,6 +194,7 @@ X_train_features = hstack([
     X_train_details,
     X_train_publisher,
     X_train_developer,
+    X_train_languages,
     csr_matrix(X_train_numeric)
 ], format="csr")
 
@@ -192,6 +204,7 @@ X_validation_features = hstack([
     X_validation_details,
     X_validation_publisher,
     X_validation_developer,
+    X_validation_languages,
     csr_matrix(X_validation_numeric)
 ], format="csr")
 
@@ -445,6 +458,33 @@ stats = comparison.groupby(
 
 print(stats.round(2))
 
+"""
+xgboost stats
+"""
+boost_results = validation[["price"]].copy()
+
+boost_results["predicted"] = boost_predictions
+
+boost_results["error"] = (
+    boost_results["predicted"] - boost_results["price"]
+)
+
+boost_results["abs_error"] = boost_results["error"].abs()
+
+boost_results["price_range"] = pd.cut(
+    boost_results["price"],
+    bins=[0, 10, 20, 40, float("inf")],
+    labels=["$0–10", "$10–20", "$20–40", "$40+"],
+    right=False
+)
+
+print(
+    boost_results.groupby("price_range", observed=True).agg(
+        games=("price", "count"),
+        mae=("abs_error", "mean"),
+        bias=("error", "mean")
+    ).round(2)
+)
 
 # ---
 """
@@ -452,6 +492,8 @@ pickle model
 """
 import joblib
 import os
+
+
 
 # Recreate our chosen Random Forest
 final_forest = RandomForestRegressor(
@@ -461,7 +503,7 @@ final_forest = RandomForestRegressor(
     n_jobs=-1
 )
 
-final_forest.fit(X_train_features, y_train)
+final_forest.fit(X_train_features, y_train, sample_weight=weights)
 
 # Package model and preprocessing together
 model_package = {
@@ -473,6 +515,7 @@ model_package = {
 
     "publisher_encoder": publisher_encoder,
     "developer_encoder": developer_encoder,
+    "languages_encoder": languages_encoder,
 
     "scaler": scaler,
     "numeric_columns": numeric_columns

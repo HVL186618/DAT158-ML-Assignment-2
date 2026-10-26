@@ -1,0 +1,10 @@
+{
+  "chosen_on": "train-only out-of-fold cross-validation",
+  "blend": "Tuned Weighted XGBoost",
+  "weights": {
+    "Random Forest": 0.0,
+    "Weighted Random Forest": 0.0,
+    "Tuned Weighted XGBoost": 1.0
+  },
+  "tuned_xgb_config_source": "tuning_results\\best_cv_configuration.json"
+}
