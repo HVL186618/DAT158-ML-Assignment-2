@@ -45,7 +45,7 @@ achievements = st.number_input("Achievements", min_value = 0, step = 1, key = "a
 
 genre = st.text_input("Genre", key = "genre", help = "Input a single genre.", label_visibility = "visible", placeholder = "Adventure")
 
-language = st.text_input("Languages", key = "languages", help = "Add languages seperated by ','", label_visibility = "visible")
+languages = st.text_input("Languages", key = "languages", help = "Add languages seperated by ','", label_visibility = "visible")
 
 #price = st.number_input("Price (In dollars $)", min_value = 0, max_value = 999, value = 0, step = 1, key = "price")
 
@@ -63,7 +63,7 @@ if st.button("Submit", key = "submit", disabled = not likeducks): #"disabled" s�
 
     else: #ellers om likeducks er 'true'...
 
-        game = {"publisher": publisher, "developer": developer, "popular_tags": popularTags, "genre": genre, "game_details": gameDetails, "achievements": int(achievements), "release_year": int(releaseDate)} #konverterer 'achievements' til int type
+        game = {"publisher": publisher, "developer": developer, "popular_tags": popularTags, "genre": genre, "game_details": gameDetails, "achievements": int(achievements), "release_year": int(releaseDate), "languages": languages} #konverterer 'achievements' til int type
         #lager en 'game' liste som passer parametere til input som 'predict_price' funksjon forventer.
        
         try: #prøver å utføre følgende kode blokk...
