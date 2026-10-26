@@ -16,7 +16,7 @@ CATEGORICAL_FEATURES = (
     ("game_details", "details_encoder"),
     ("publisher", "publisher_encoder"),
     ("developer", "developer_encoder"),
-    ("languages", "language_encoder"),
+    ("languages", "languages_encoder"),
 )
 
 
