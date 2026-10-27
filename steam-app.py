@@ -67,7 +67,7 @@ if st.button("Submit", key = "submit", disabled = not likeducks): #"disabled" s�
         #lager en 'game' liste som passer parametere til input som 'predict_price' funksjon forventer.
        
         try: #prøver å utføre følgende kode blokk...
-            prediction = predict_price(game) #lager en 'prediction' objekt som blir da desimaltall verdi returnert av predict_price(game)
+            prediction = round(predict_price(game), 2) #lager en 'prediction' objekt som blir da desimaltall verdi returnert av predict_price(game)
         except(OSError, KeyError, TypeError, ValueError) as exc: #om du har OSError, KeyError, TypeError eller ValueError blir det satt til 'exc' (exception type) og blokken kjøres
             st.error(f"Couldn't make a prediction: **{exc}**") #printer ut error melding  at man ikke kunne gjøre anslag og sender 'exc' objekt
         else: #ellers om det ikke blir feil kjøres denne kode blokken. VIKTIG: Kjøres bare om det ikke er feil.
