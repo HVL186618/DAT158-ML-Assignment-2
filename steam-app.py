@@ -21,17 +21,17 @@ publisher = st.text_input("Publisher", key = "publisher", placeholder = "Annapur
 
 developer = st.text_input("Developer", key = "developer", placeholder = "Mobius Digital")
 
-recentCount = st.number_input("Recent Reviews Count", min_value = 0, step = 1, key = "recent-count")
+#recentCount = st.number_input("Recent Reviews Count", min_value = 0, step = 1, key = "recent-count")
 
 #min og max verdi representerer fra 0.00 til 1.00 prosent av nylige positive reviews
 #"min_value" og "max_value" må være av samme type, som her er double
-recentPositive = st.slider("Recent Positive Reviews (%)", min_value = 0.00, max_value = 1.00, step = 0.01, key = "recent-positive", help = "From 0-100%, 0.00 = 0 and 1.00 = 100", label_visibility = "visible") #'help = "string"' viser en notat når du har musen over feltet om 'label_visibility = "visible"'
+#recentPositive = st.slider("Recent Positive Reviews (%)", min_value = 0.00, max_value = 1.00, step = 0.01, key = "recent-positive", help = "From 0-100%, 0.00 = 0 and 1.00 = 100", label_visibility = "visible") #'help = "string"' viser en notat når du har musen over feltet om 'label_visibility = "visible"'
 
-reviewsCount = st.number_input("Reviews Count", min_value = 0, step = 1, key = "reviews-count")
+#reviewsCount = st.number_input("Reviews Count", min_value = 0, step = 1, key = "reviews-count")
 
 #min og max verdi representerer fra 0.00 til 1.00 av positive reviews
 #"min_value" og "max_value" må være av samme type, som her er double
-reviewsPositive = st.slider("Recent Positive Reviews (%)", min_value = 0.00, max_value = 1.00, step = 0.01, key = "reviews-positive", help = "From 0-100%, 0.00 = 0 and 1.00 = 100", label_visibility = "visible")
+#reviewsPositive = st.slider("Recent Positive Reviews (%)", min_value = 0.00, max_value = 1.00, step = 0.01, key = "reviews-positive", help = "From 0-100%, 0.00 = 0 and 1.00 = 100", label_visibility = "visible")
 
 
 releaseDate = st.number_input("Release Date", key = "release-date", min_value = 2003, step = 1) #utslippsdatoen
@@ -63,7 +63,16 @@ if st.button("Submit", key = "submit", disabled = not likeducks): #"disabled" s�
 
     else: #ellers om likeducks er 'true'...
 
-        game = {"publisher": publisher, "developer": developer, "popular_tags": popularTags, "genre": genre, "game_details": gameDetails, "achievements": int(achievements), "release_year": int(releaseDate), "languages": languages} #konverterer 'achievements' til int type
+        game = {
+            "publisher": publisher,
+            "developer": developer,
+            "popular_tags": popularTags,
+            "genre": genre,
+            "game_details": gameDetails,
+            "achievements": int(achievements),
+            "release_year": int(releaseDate),
+            "languages": languages
+        } #konverterer 'achievements' til int type
         #lager en 'game' liste som passer parametere til input som 'predict_price' funksjon forventer.
        
         try: #prøver å utføre følgende kode blokk...
