@@ -1,4 +1,5 @@
-"""
+"""courtesy of chatpgt
+
 Compare ensembles for the Steam price prediction project.
 
 An ensemble is a weighted average of predictions from different models.

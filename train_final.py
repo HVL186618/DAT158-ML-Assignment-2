@@ -1,3 +1,4 @@
+"""train steamduck20"""
 import os
 import joblib
 import numpy as np
@@ -99,7 +100,7 @@ print(f"Validation shape: {X_validation_features.shape}")
 
 # --- training yay ---
 
-# expensive games get more influence during training
+# expensive games get more weight/influence during training
 weights = np.where(
     y_train >= 40, 6,
     np.where(y_train >= 20, 3, 1)
@@ -145,7 +146,7 @@ print(f"$40+ bias: ${(predictions[expensive] - prices[expensive]).mean():.2f}")
 print(f"$20-60 within $5: {(errors[focus] <= 5).mean() * 100:.1f}%")
 
 
-# --- save the contender ---
+# --- save the him ---
 model_package = {
     "model": boost,
     "tag_encoder": tag_encoder,

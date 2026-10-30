@@ -75,7 +75,7 @@ tag_stats = tag_stats[tag_stats["count"] >= 100]
 
 # select highest-priced tags
 average_prices = (
-    tag_stats.nlargest(100, "mean")["mean"]
+    tag_stats.nlargest(1000, "mean")["mean"]
     .sort_values()
 )
 

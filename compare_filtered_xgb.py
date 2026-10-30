@@ -1,4 +1,6 @@
-"""Compare tuned weighted XGBoost with vs without suspicious training rows.
+"""another test courtesy of chatgpt
+
+Compare tuned weighted XGBoost with vs without suspicious training rows.
 
 Put this file, test.csv, steam_price_experimental_filtered_2026.csv,
 and tune_model.py in the same folder. Run: python compare_filtered_xgb.py
