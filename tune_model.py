@@ -9,24 +9,6 @@ The final 15% TEST partition is never evaluated or fitted on.
 Fit the multi-label encoders and scaler *inside each cross-validation fold*.
 This avoids learning validation-fold vocabularies during preprocessing.
 
-Run from the project folder containing test.csv:
-    pip install pandas numpy scipy scikit-learn xgboost joblib
-    python tune_model.py
-
-Optional:
-    python tune_model.py --trials 48 --folds 3
-    python tune_model.py --trials 8 --folds 3   # shorter trial run
-    python tune_model.py --dataset path/to/test.csv --outdir tuning_results
-
-Output (saved after each completed configuration):
-    tuning_results/tuning_trials.csv
-    tuning_results/best_cv_configuration.json
-    tuning_results/tuning_cv_folds.csv
-    tuning_results/validation_summary.csv       (after the search completes)
-    tuning_results/validation_by_price_range.csv (after the search completes)
-    tuning_results/validation_predictions.csv    (after the search completes)
-    tuning_results/tuned_xgboost_candidate.joblib (separate from the website model)
-
 Main selection score (LOWER IS BETTER):
     70% * cross-validated MAE for games priced $20+
     30% * cross-validated MAE for all games

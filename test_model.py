@@ -1,13 +1,6 @@
 """
 Steam Game Price Predictor -- comparison of additional regression models.
 
-Run from your project folder (the folder containing test.csv):
-    python test_model.py
-
-Optional:
-    pip install lightgbm catboost
-    python test_model.py --dataset test.csv
-
 Models use exactly the same 70/15/15 random_state=42 split as train_model.py.
 The TEST partition is never used for training, selecting models, or reporting
 scores. This script does NOT overwrite models/steam_price_model.pkl.
