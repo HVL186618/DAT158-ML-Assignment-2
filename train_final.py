@@ -160,6 +160,6 @@ model_package = {
 }
 
 os.makedirs("models", exist_ok=True)
-joblib.dump(model_package, "models/steamduck20.pkl")
+joblib.dump(model_package, "model/steamduck20.pkl")
 
 print("\nContender saved: model/steamduck20.pkl") # duckomotive

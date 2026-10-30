@@ -24,7 +24,7 @@ plt.plot(
 )
 
 plt.xlabel("Release Year")
-plt.ylabel("Median Price ($)")
+plt.ylabel("Mean Price ($)")
 plt.title("Mean Steam Game Price by Release Year")
 plt.grid(True)
 
